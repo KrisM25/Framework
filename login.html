@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary's Makeup - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffffff, #ee8b7a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+            padding: 20px; /* Añadido para evitar el desbordamiento en dispositivos pequeños */
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px; /* Ajustado para dispositivos más pequeños */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px; /* Ajuste máximo para pantallas grandes */
+            text-align: center;
+            position: relative; /* Añadido para posicionar el botón de regreso */
+        }
+        .container img {
+            width: 100%; /* Hacer que la imagen sea responsiva */
+            max-width: 200px; /* Limitar el tamaño máximo de la imagen */
+            height: auto; /* Mantener la proporción de la imagen */
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #14030c;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .input-group {
+            position: relative;
+            margin: 10px 0;
+        }
+        .input-group i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 12px 12px 40px; /* Ajustar el relleno para hacer espacio para el ícono */
+            margin: 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 30%;
+            padding: 10px;
+            background-color: #e6444c;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #d87474;
+        }
+        .link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: #ff0000;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        /* Estilos para el botón de regresar */
+        .back-button {
+            margin-top: 20px; /* Separar del formulario */
+            padding: 12px;
+            background: #000; /* Color de fondo negro */
+            color: #fff; /* Color de texto blanco */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            align-self: start;
+            display: flex;
+            width: fit-content;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .back-button:hover {
+            background-color: #333; /* Color de fondo negro más oscuro al pasar el mouse */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos para los enlaces de opciones */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .options a {
+            color: #e6444c; /* Color de texto del enlace */
+            text-decoration: none;
+        }
+        .options a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries para Dispositivos Móviles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px; /* Reducir el relleno en dispositivos más pequeños */
+            }
+            h2 {
+                font-size: 20px; /* Ajustar el tamaño de fuente del encabezado */
+            }
+            button {
+                font-size: 14px; /* Reducir el tamaño de fuente del botón */
+            }
+            .input-group i {
+                font-size: 14px; /* Ajustar el tamaño del ícono */
+            }
+            .options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .options a {
+                margin-top: 10px; /* Separar los enlaces en dispositivos móviles */
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px; /* Más reducción del relleno en dispositivos muy pequeños */
+            }
+            h2 {
+                font-size: 18px; /* Ajustar aún más el tamaño de fuente del encabezado */
+            }
+            button {
+                font-size: 12px; /* Reducir aún más el tamaño de fuente del botón */
+            }
+            .input-group i {
+                font-size: 12px; /* Ajustar el tamaño del ícono */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Botón de regresar -->
+        <a href="./bootstrap-shop-template/index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <!-- Imagen del logo -->
+        <img src="/img/mm.PNG" alt="Mary's Makeup Logo">
+      
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Nombre de usuario" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </div>
+            <button type="submit">Ingresar</button>
+            <div id="error-message" class="error-message"></div>
+
+            <!-- Opciones de contraseña -->
+            <div class="options">
+                <label>
+                    <input type="checkbox" id="remember"> Recordar Contraseña
+                </label>
+                <a href="#">Olvidé mi contraseña</a>
+            </div>
+            
+        </form>
+    </div>
+    <script>
+        // Variables
+        const MAX_ATTEMPTS = 3;
+        let attempts = 0;
+        const validUsername = "admin"; // Cambiar por el nombre de usuario válido
+        const validPassword = "password123"; // Cambiar por la contraseña válida
+
+        // Función para manejar el envío del formulario
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+
+            // Obtener valores del formulario
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Validar credenciales
+            if (username === validUsername && password === validPassword) {
+                alert('Inicio de sesión exitoso');
+                // Redirigir o manejar el inicio de sesión exitoso aquí
+                // window.location.href = '/dashboard'; // Ejemplo de redirección
+            } else {
+                attempts++;
+                if (attempts >= MAX_ATTEMPTS) {
+                    errorMessage.textContent = 'Número máximo de intentos alcanzado. Cerrando....';
+                    setTimeout(() => {
+                        window.close(); // Cerrar la ventana del navegador
+                    }, 2000);
+                } else {
+                    errorMessage.textContent = 'Nombre de usuario o contraseña incorrectos. Intento ' + attempts + ' de ' + MAX_ATTEMPTS;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
